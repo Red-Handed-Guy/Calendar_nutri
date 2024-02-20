@@ -1,0 +1,44 @@
+@import '../../styles/reset.module.scss';
+@import '../../styles/const.scss';
+
+.calendar_wrapper {
+  max-width: 425px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 30px 10px 30px 10px;
+}
+
+.calendar_title {
+  @include reset-text;
+  width: 100%;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.calendar_body {
+  width: 100%;
+  min-height: 200px;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.month_buttons_wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.month_title {
+  @include reset-text;
+}
+
+.week_days {
+  color: $dark-gray;
+}

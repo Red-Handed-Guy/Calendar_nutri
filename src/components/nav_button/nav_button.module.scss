@@ -1,0 +1,30 @@
+@import '../../styles/reset.module.scss';
+@import '../../styles/const.scss';
+
+.month_button {
+  @include reset-button;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:active {
+    background-color: $dark-gray;
+  }
+  @media (width > 768px) {
+    &:hover {
+      background-color: $medium-gray;
+    }
+  }
+}
+
+.arrow_svg {
+  width: 20px;
+  height: 20px;
+}
+
+.arrow_svg_left {
+  transform: rotate(180deg);
+}
