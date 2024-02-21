@@ -1,4 +1,4 @@
-@import '../../styles/reset.module.scss';
+@import '../../styles/reset.scss';
 @import '../../styles/const.scss';
 
 .calendar_wrapper {
@@ -10,6 +10,8 @@
   align-items: center;
   box-sizing: border-box;
   padding: 30px 10px 30px 10px;
+  background-color: $white;
+  border-radius: 10px;
 }
 
 .calendar_title {
@@ -41,4 +43,9 @@
 
 .week_days {
   color: $dark-gray;
+}
+
+.table_wrapper {
+  width: 100%;
+  min-height: 250px;
 }

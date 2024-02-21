@@ -1,18 +1,17 @@
-@import '../../styles/reset.scss';
 @import '../../styles/const.scss';
+@import '../../styles/reset.scss';
 
-.month_button {
+.button {
   @include reset-button;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+  background-color: $green;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 50px;
+  width: 100%;
+  border-radius: 10px;
   box-sizing: border-box;
   border: 1px solid transparent;
-  flex: auto 0 0;
-
   &:active {
     background-color: $dark-gray;
   }
@@ -23,11 +22,12 @@
   }
 }
 
-.arrow_svg {
-  width: 20px;
-  height: 20px;
+.button_disabled {
+  background-color: $dark-gray;
 }
 
-.arrow_svg_left {
-  transform: rotate(180deg);
+.button_text {
+  @include reset-text;
+  color: $white;
+  font-size: 18px;
 }

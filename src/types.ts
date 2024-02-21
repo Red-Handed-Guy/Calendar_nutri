@@ -1,4 +1,4 @@
-export enum Months {
+export enum MonthsEnum {
   ['Январь'],
   ['Февраль'],
   ['Март'],
@@ -12,6 +12,23 @@ export enum Months {
   ['Ноябрь'],
   ['Декабрь'],
 }
+
+export enum MonthsEnumGenitiveEnum {
+  ['Января'],
+  ['Февраля'],
+  ['Марта'],
+  ['Апреля'],
+  ['Мая'],
+  ['Июня'],
+  ['Июля'],
+  ['Августа'],
+  ['Сентября'],
+  ['Октября'],
+  ['Ноября'],
+  ['Декабря'],
+}
+
+export type ChoiceType = 'gray' | 'yellow' | 'green'
 
 export interface dateInterface {
   day?: number | null

@@ -1,0 +1,52 @@
+@import '../../styles/const.scss';
+@import '../../styles/reset.scss';
+
+.nav_buttons_wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  max-width: 600px;
+  column-gap: 10px;
+}
+
+.nav_buttons_wrapper .nav_button {
+  background-color: #fff;
+}
+
+.date_svg {
+  width: 24px;
+  height: 24px;
+}
+
+.date_text {
+  @include reset-text;
+  font-size: 18px;
+  padding: 0 20px;
+  text-transform: lowercase;
+  font-weight: 700;
+}
+
+.date_button {
+  @include reset-button;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  flex: auto 1 0;
+  justify-content: center;
+  &:active {
+    background-color: $dark-gray;
+  }
+  @media (width > 768px) {
+    &:hover {
+      border: 1px solid $black;
+    }
+  }
+}

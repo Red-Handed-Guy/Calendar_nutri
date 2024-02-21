@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import dateSlice from './slices/dateSlice'
-import activeMonthSlice from './slices/activeMonthSlice'
+import dateSlice from './slices/date_slice'
+import activeMonthsEnumlice from './slices/active_month_slice'
+import savedChoicesSlice from './slices/saved_choices_slice'
 
 export const store = configureStore({
-  reducer: { dateSlice, activeMonthSlice },
+  reducer: { dateSlice, activeMonthsEnumlice, savedChoicesSlice },
 })
 
 export type RootState = ReturnType<typeof store.getState>

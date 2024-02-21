@@ -40,14 +40,15 @@ function cuttingIntoWeeks(month: number[]): number[][] {
 }
 
 export function findLastDay(y: number, m: number) {
-  return new Date(y, m, 0).getDate()
+  const newMonth = m + 1
+  return new Date(y, newMonth, 0).getDate()
 }
 
 export function range(date: dateInterface) {
   if (date.month === null) {
     return
   }
-  const daysInMonth = findLastDay(date.year, date.month + 1)
+  const daysInMonth = findLastDay(date.year, date.month)
 
   const firstMonthDay = new Date(date.year, date.month, 1).getDay()
 
