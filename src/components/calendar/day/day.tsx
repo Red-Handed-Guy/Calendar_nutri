@@ -23,7 +23,7 @@ const Day: FC<DayInterface> = ({ day, index }) => {
   )
   const dispatch = useAppDispatch()
   const [statusColor, setStatusColor] = useState<ChoiceType>('gray')
-  const [notFuture, setNotFuture] = useState<boolean>(false)
+  const [isFuture, setIsFuture] = useState<boolean>(false)
 
   useEffect(() => {
     const today = concatDate({
@@ -37,22 +37,35 @@ const Day: FC<DayInterface> = ({ day, index }) => {
       day: day,
     })
 
-    const checkFuture = thisDay <= today
-    setNotFuture(checkFuture)
-  }, [])
+    const checkIsFuture = today < thisDay
+    setIsFuture(checkIsFuture)
+  }, [
+    activeMonthDate.month,
+    activeMonthDate.year,
+    day,
+    todayDate.day,
+    todayDate.month,
+    todayDate.year,
+  ])
 
   useEffect(() => {
-    savedChoices.forEach(data => {
-      data.date ===
-      concatDate({
-        month: activeMonthDate.month,
-        year: activeMonthDate.year,
-        day: day,
+    const foundDate = savedChoices.filter(
+      item =>
+        item.date ===
+        concatDate({
+          month: activeMonthDate.month,
+          year: activeMonthDate.year,
+          day: day,
+        }),
+    )
+    if (foundDate.length > 0) {
+      foundDate.forEach(item => {
+        setStatusColor(item.choice)
       })
-        ? setStatusColor(data.choice)
-        : setStatusColor('gray')
-    })
-  }, [])
+    } else {
+      setStatusColor('gray')
+    }
+  }, [activeMonthDate.month, activeMonthDate.year, day, savedChoices])
 
   const isActive =
     activeDate.day === day &&
@@ -80,17 +93,17 @@ const Day: FC<DayInterface> = ({ day, index }) => {
       }),
     )
   }
-
   return (
     <td
       className={`${styles.table_data} ${isToday && styles.table_data_today} ${isActive && styles.table_data_active} ${isSelected && styles.table_data_selected}`}
     >
       <button
         onClick={handleClick}
-        className={`${styles.table_button} ${(index === 5 || index === 6) && styles.table_button_red} `}
+        disabled={isFuture}
+        className={`${styles.table_button} ${(index === 5 || index === 6) && styles.table_button_red} ${isFuture && styles.table_button_disabled}`}
       >
         <p
-          className={`${styles.table_button_text} ${notFuture && styles[`table_button_text_${statusColor}`]}`}
+          className={`${styles.table_button_text} ${!isFuture && styles[`table_button_text_${statusColor}`]}`}
         >
           {day}
         </p>

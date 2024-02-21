@@ -36,3 +36,8 @@ export interface dateInterface {
   month: number | null
   daysInMonth?: number | null
 }
+
+export interface ChoiceItemInterface {
+  choice: ChoiceType
+  date: number
+}

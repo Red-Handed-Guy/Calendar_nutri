@@ -26,7 +26,11 @@ export function buildPlugins({
     plugins.push(new webpack.ProgressPlugin())
     plugins.push(new ForkTsCheckerWebpackPlugin())
     plugins.push(new ReactRefreshWebpackPlugin())
-    plugins.push(new ESLintPlugin())
+    plugins.push(
+      new ESLintPlugin({
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+      }),
+    )
   }
 
   if (isProd) {
@@ -34,7 +38,7 @@ export function buildPlugins({
       new MiniCssExtractPlugin({
         filename: 'css/[name].[contenthash:8].css',
         chunkFilename: 'css/[name].[contenthash:8].css',
-      })
+      }),
     )
   }
 

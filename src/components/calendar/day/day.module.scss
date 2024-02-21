@@ -26,6 +26,7 @@
   display: block;
   width: 100%;
   height: 33px;
+  color: $black;
   &:hover {
     font-weight: 700;
   }
@@ -33,6 +34,10 @@
 
 .table_button_red {
   color: $primary-color;
+}
+
+.table_button_disabled {
+  opacity: 0.6;
 }
 
 .table_button_text {

@@ -6,21 +6,24 @@ interface NavButtonInteface {
   onClick: () => void
   isArrowLeft?: boolean
   extraStyles?: string
+  disabled?: boolean
 }
 
 const NavButton: FC<NavButtonInteface> = ({
   extraStyles,
   onClick,
   isArrowLeft = false,
+  disabled = false,
 }) => {
   return (
     <button
+      disabled={disabled}
       type="button"
-      className={`${styles.month_button} ${extraStyles}`}
+      className={`${styles.month_button} ${extraStyles} ${!disabled && styles.month_button_active}`}
       onClick={onClick}
     >
       <Arrow
-        className={`${styles.arrow_svg} ${isArrowLeft && styles.arrow_svg_left}`}
+        className={`${styles.arrow_svg} ${disabled && styles.arrow_svg_disabled} ${isArrowLeft && styles.arrow_svg_left}`}
       />
     </button>
   )

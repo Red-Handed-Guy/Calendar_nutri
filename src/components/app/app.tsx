@@ -33,6 +33,7 @@ const App: FC = () => {
       return
     }
     dispatch(setSavedChoices({ saved: savedChoices }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import Week from './week/week'
 import styles from './calendar.module.scss'
 import { MonthsEnum } from '../../types'
@@ -16,11 +16,29 @@ interface CalendarInterface {
 }
 
 const Calendar: FC<CalendarInterface> = ({ setIsPopupOpened }) => {
+  const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false)
   const activeMonth = useAppSelector(state => state.activeMonthsEnumlice)
+  const todayDate = useAppSelector(state => state.dateSlice.todayDate)
 
   const selectedDate = useAppSelector(state => state.dateSlice.selectedDate)
 
   const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    if (
+      activeMonth.date.month === todayDate.month &&
+      activeMonth.date.year === todayDate.year
+    ) {
+      setIsButtonDisabled(true)
+    } else {
+      setIsButtonDisabled(false)
+    }
+  }, [
+    activeMonth.date.month,
+    activeMonth.date.year,
+    todayDate.month,
+    todayDate.year,
+  ])
 
   const handleGetPreviousMonth = () => {
     dispatch(monthDecrement())
@@ -54,7 +72,7 @@ const Calendar: FC<CalendarInterface> = ({ setIsPopupOpened }) => {
           <h3 className={styles.month_title}>
             {MonthsEnum[activeMonth.date.month]}
           </h3>
-          <NavButton onClick={handleGetNextMonth} />
+          <NavButton disabled={isButtonDisabled} onClick={handleGetNextMonth} />
         </div>
         <div className={styles.table_wrapper}>
           <table className={styles.calendar_body}>

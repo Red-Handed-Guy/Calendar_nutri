@@ -1,14 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { ChoiceType } from '../../types'
-
-interface choiceInterface {
-  choice: ChoiceType
-  date: number
-}
+import { ChoiceItemInterface } from '../../types'
 
 interface dateSliceInterface {
-  savedChoices: choiceInterface[]
+  savedChoices: ChoiceItemInterface[]
 }
 
 const initialState: dateSliceInterface = {
@@ -21,13 +16,29 @@ const savedChoicesSlice = createSlice({
   reducers: {
     setSavedChoices: (
       state,
-      action: PayloadAction<{ saved: choiceInterface[] }>,
+      action: PayloadAction<{ saved: ChoiceItemInterface[] }>,
     ) => {
       state.savedChoices = action.payload.saved
+    },
+    setNewChoice: (
+      state,
+      action: PayloadAction<{ choice: ChoiceItemInterface }>,
+    ) => {
+      const newState = [...state.savedChoices, action.payload.choice]
+      state.savedChoices = newState
+      localStorage.setItem('savedChoices', JSON.stringify(newState))
+    },
+    deleteChoice: (state, action: PayloadAction<{ date: number }>) => {
+      const newState = state.savedChoices.filter(
+        item => item.date !== action.payload.date,
+      )
+      state.savedChoices = newState
+      localStorage.setItem('savedChoices', JSON.stringify(newState))
     },
   },
 })
 
-export const { setSavedChoices } = savedChoicesSlice.actions
+export const { setSavedChoices, setNewChoice, deleteChoice } =
+  savedChoicesSlice.actions
 
 export default savedChoicesSlice.reducer

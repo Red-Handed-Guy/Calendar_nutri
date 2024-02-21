@@ -1,19 +1,74 @@
-import { FC, MouseEventHandler, useState } from 'react'
+import { FC, MouseEventHandler, useEffect, useState } from 'react'
 import styles from './active_page.module.scss'
 import Calendar from '../calendar/calendar'
 import NavByDay from '../nav_by_day/nav_by_day'
 import { ChoiceType } from '../../types'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import {
+  deleteChoice,
+  setNewChoice,
+} from '../../redux/slices/saved_choices_slice'
+import { concatDate } from '../../utils/consts'
 
 const ActivePage: FC = () => {
   const [isPopupOpened, setIsPopupOpened] = useState<boolean>(false)
   const [choice, setChoice] = useState<ChoiceType | 'empty'>('empty')
+  const dispatch = useAppDispatch()
+  const activeDate = useAppSelector(state => state.dateSlice.activeDate)
+  const savedChoices = useAppSelector(
+    state => state.savedChoicesSlice.savedChoices,
+  )
+
+  useEffect(() => {
+    const foundDate = savedChoices.filter(
+      item =>
+        item.date ===
+        concatDate({
+          month: activeDate.month,
+          year: activeDate.year,
+          day: activeDate.day,
+        }),
+    )
+    if (foundDate.length > 0) {
+      foundDate.forEach(item => {
+        setChoice(item.choice)
+      })
+    } else {
+      setChoice('empty')
+    }
+  }, [activeDate.day, activeDate.month, activeDate.year, savedChoices])
 
   const handleClickPopupBackground = () => {
     setIsPopupOpened(false)
   }
 
   const makeChoice: MouseEventHandler<HTMLButtonElement> = e => {
-    setChoice(e.currentTarget.name as ChoiceType)
+    if (choice !== 'empty') {
+      return
+    }
+    const name = e.currentTarget.name as ChoiceType
+    const thisActiveDay = concatDate({
+      month: activeDate.month,
+      year: activeDate.year,
+      day: activeDate.day,
+    })
+
+    dispatch(setNewChoice({ choice: { choice: name, date: thisActiveDay } }))
+    setChoice(name)
+  }
+
+  const clearChoice = () => {
+    const thisActiveDay = concatDate({
+      month: activeDate.month,
+      year: activeDate.year,
+      day: activeDate.day,
+    })
+    dispatch(
+      deleteChoice({
+        date: thisActiveDay,
+      }),
+    )
+    setChoice('empty')
   }
 
   return (
@@ -56,7 +111,7 @@ const ActivePage: FC = () => {
             <button
               name="empty"
               type="button"
-              onClick={makeChoice}
+              onClick={clearChoice}
               className={`${styles.content_button_reset}`}
             >
               hello world?
