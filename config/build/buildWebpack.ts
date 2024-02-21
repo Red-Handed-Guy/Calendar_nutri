@@ -20,7 +20,7 @@ export function buildWebpack(options: BuildOptions): webpack.Configuration {
       filename: '[name].[contenthash].js',
       path: paths.output,
       clean: true,
-      publicPath: '/',
+      publicPath: '/Calendar_nutri',
     },
     plugins: buildPlugins(options).filter(Boolean),
     module: {
