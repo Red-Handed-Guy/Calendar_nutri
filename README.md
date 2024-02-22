@@ -8,7 +8,7 @@
 
 Не используйте в своей реализации какие-либо базы данных. Всё, что нужно сохранить, складывайте в json-файлы.
 
-## Result of work
+## Work result
 
 Ссылка на результат работы - https://red-handed-guy.github.io/Calendar_nutri/
 
