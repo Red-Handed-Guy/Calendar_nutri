@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "description": "description",
   "main": "index.js",
+  "preset": "ts-jest",
+  "testEnvironment": "node",
   "scripts": {
-    "test": "jest",
+    "test": "jest --config ./jest.config.js",
     "build": "webpack --env mode=production",
     "start": "webpack serve --env mode=development",
     "server": "serve -s build",

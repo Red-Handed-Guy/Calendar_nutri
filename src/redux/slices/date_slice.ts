@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { dateInterface } from '../../types'
-import { findLastDay } from './helper'
+import { findLastDay } from '../../utils/consts'
 
 interface dateSliceInterface {
   todayDate: dateInterface

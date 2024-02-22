@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { dateInterface } from '../../types'
-import { range } from './helper'
+import { range } from '../../utils/consts'
 
 interface activeMonthInterface {
   activeMonthArr: number[][]

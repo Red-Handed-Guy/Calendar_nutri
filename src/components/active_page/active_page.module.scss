@@ -23,9 +23,13 @@
 .content_wrapper {
   width: 100%;
   flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .content {
+  max-width: 600px;
   width: 100%;
   background-color: #fff;
   border-radius: 10px;
