@@ -10,7 +10,9 @@
 
 ## Result of work
 
-https://red-handed-guy.github.io/Calendar_nutri/
+Ссылка на результат работы - https://red-handed-guy.github.io/Calendar_nutri/
+
+![Image alt](https://github.com/Red-Handed-Guy/Calendar_nutri/raw/main/src/icons/screen.png)
 
 ## Installation
 Приложение было разработано на версии **Node v20.10.0**, и **npm v10.2.3**
