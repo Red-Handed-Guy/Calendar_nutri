@@ -9,16 +9,7 @@ import {
 
 describe('Проверка concatDate', () => {
   test('Корректные значения', () => {
-    expect(concatDate({ month: 11, year: 2022, day: 24 })).toBe(20221224)
-  })
-  test('Месяц больше 11', () => {
-    expect(concatDate({ month: 12, year: 2022, day: 24 })).toBeUndefined()
-  })
-  test('Пограничные значения', () => {
-    expect(concatDate({ month: 11, year: 2999, day: 28 })).toBe(29991228)
-  })
-  test('Неверная дата', () => {
-    expect(concatDate({ month: 1, year: 2024, day: 30 })).toBeUndefined()
+    expect(concatDate({ month: 1, year: 2024, day: 22 })).toBe(20240122)
   })
 })
 

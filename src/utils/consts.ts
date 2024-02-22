@@ -1,27 +1,9 @@
 import { dateInterface } from '../types'
 
 export function concatDate({ month, year, day }: dateInterface) {
-  if (
-    month > 11 ||
-    month < 0 ||
-    year > 3000 ||
-    year < 1000 ||
-    day > 31 ||
-    day < 1
-  ) {
-    return
-  }
   const stringYear = year + ''
-  const stringMonth =
-    `${month}`.length < 2 ? '0' + `${month + 1}` : `${month + 1}`
+  const stringMonth = `${month}`.length < 2 ? '0' + `${month}` : `${month}`
   const stringDay = `${day}`.length < 2 ? '0' + `${day}` : `${day}`
-  if (
-    new Date(
-      Date.parse(stringYear + '-' + stringMonth + '-' + stringDay),
-    ).getDate() !== day
-  ) {
-    return
-  }
   return Number(stringYear + stringMonth + stringDay)
 }
 
