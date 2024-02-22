@@ -30,7 +30,7 @@ export enum MonthsEnumGenitiveEnum {
 
 export type ChoiceType = 'gray' | 'yellow' | 'green'
 
-export interface dateInterface {
+export interface DateInterface {
   day?: number | null
   year: number | null
   month: number | null

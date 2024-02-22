@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { dateInterface } from '../../types'
+import { DateInterface } from '../../types'
 import { findLastDay } from '../../utils/consts'
 
-interface dateSliceInterface {
-  todayDate: dateInterface
-  activeDate: dateInterface
-  selectedDate: dateInterface
+interface DateSliceInterface {
+  todayDate: DateInterface
+  activeDate: DateInterface
+  selectedDate: DateInterface
 }
 
-const initialState: dateSliceInterface = {
+const initialState: DateSliceInterface = {
   activeDate: {
     day: null,
     year: null,
@@ -32,12 +32,12 @@ const dateSlice = createSlice({
   name: 'date',
   initialState,
   reducers: {
-    setTodayDate: (state, action: PayloadAction<{ today: dateInterface }>) => {
+    setTodayDate: (state, action: PayloadAction<{ today: DateInterface }>) => {
       state.todayDate = action.payload.today
     },
     setSelectedDate: (
       state,
-      action: PayloadAction<{ selected: dateInterface }>,
+      action: PayloadAction<{ selected: DateInterface }>,
     ) => {
       state.selectedDate = action.payload.selected
     },
@@ -47,7 +47,7 @@ const dateSlice = createSlice({
 
     setActiveDate: (
       state,
-      action: PayloadAction<{ active: dateInterface }>,
+      action: PayloadAction<{ active: DateInterface }>,
     ) => {
       state.activeDate = {
         ...action.payload.active,

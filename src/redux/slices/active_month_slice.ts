@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { dateInterface } from '../../types'
+import { DateInterface } from '../../types'
 import { range } from '../../utils/consts'
 
-interface activeMonthInterface {
+interface ActiveMonthInterface {
   activeMonthArr: number[][]
-  date: dateInterface
+  date: DateInterface
 }
 
-const initialState: activeMonthInterface = {
+const initialState: ActiveMonthInterface = {
   activeMonthArr: [],
   date: {
     year: null,
@@ -20,7 +20,7 @@ const activeMonthsEnumlice = createSlice({
   name: 'activeMonth',
   initialState,
   reducers: {
-    setMonth: (state, action: PayloadAction<{ date: dateInterface }>) => {
+    setMonth: (state, action: PayloadAction<{ date: DateInterface }>) => {
       state.activeMonthArr = range(action.payload.date)
       state.date = action.payload.date
     },

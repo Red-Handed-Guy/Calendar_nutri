@@ -1,6 +1,6 @@
-import { dateInterface } from '../types'
+import { DateInterface } from '../types'
 
-export function concatDate({ month, year, day }: dateInterface) {
+export function concatDate({ month, year, day }: DateInterface) {
   const stringYear = year + ''
   const stringMonth = `${month}`.length < 2 ? '0' + `${month}` : `${month}`
   const stringDay = `${day}`.length < 2 ? '0' + `${day}` : `${day}`
@@ -57,7 +57,7 @@ export function cuttingIntoWeeks(month: number[]): number[][] {
   return monthByWeeks
 }
 
-export function range(date: dateInterface) {
+export function range(date: DateInterface) {
   if (date.month === null) {
     return
   }

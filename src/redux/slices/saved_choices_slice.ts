@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { ChoiceItemInterface } from '../../types'
 
-interface dateSliceInterface {
+interface DateSliceInterface {
   savedChoices: ChoiceItemInterface[]
 }
 
-const initialState: dateSliceInterface = {
+const initialState: DateSliceInterface = {
   savedChoices: [],
 }
 
