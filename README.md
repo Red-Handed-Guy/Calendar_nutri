@@ -28,6 +28,7 @@
   npm start
 ```
 4) Что бы запустить в prod режиме:
+
 4.1) Пройти по пути Calendar_nutri\config\build\buildWebpack.ts, найти следущее:
 ```bash
    output: {
