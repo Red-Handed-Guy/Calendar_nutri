@@ -31,6 +31,7 @@
 
 * a) Пройти по пути Calendar_nutri\config\build\buildWebpack.ts, найти следущее:
 ```bash
+buildWebpack.ts
    output: {
       filename: '[name].[contenthash].js',
       path: paths.output,
