@@ -23,15 +23,37 @@
 ```bash
   npm ci
 ```
-3) Собрать билд командой 
+3) Что бы запустить в dev режиме 
+```bash
+  npm start
+```
+4) Что бы запустить в prod режиме:
+4.1) Пройти по пути Calendar_nutri\config\build\buildWebpack.ts, найти следущее:
+```bash
+   output: {
+      filename: '[name].[contenthash].js',
+      path: paths.output,
+      clean: true,
+      publicPath: '/Calendar_nutri/',
+    },
+```
+4.2) заменить на:
+```bash
+   output: {
+      filename: '[name].[contenthash].js',
+      path: paths.output,
+      clean: true,
+      publicPath: '/',
+    },
+```
+4.3) Собрать билд командой 
 ```bash
   npm run build
 ```
-4) Запустить билд командой
+4.4) Запустить командой 
 ```bash
   npm run server
 ```
-
 
 ## Tech Stack
 
