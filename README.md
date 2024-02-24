@@ -29,9 +29,11 @@
 ```
 4) Что бы запустить локально в **prod** режиме:
 
-* a) Пройти по пути Calendar_nutri\config\build\buildWebpack.ts, найти следущее:
+* a) Пройти по пути Calendar_nutri/config/build/buildWebpack.ts, найти следущее:
 ```bash
-buildWebpack.ts
+>Calendar_nutri/config/build/buildWebpack.ts
+
+
    output: {
       filename: '[name].[contenthash].js',
       path: paths.output,
@@ -41,6 +43,8 @@ buildWebpack.ts
 ```
 * b) заменить на:
 ```bash
+>Calendar_nutri/config/build/buildWebpack.ts
+
    output: {
       filename: '[name].[contenthash].js',
       path: paths.output,
