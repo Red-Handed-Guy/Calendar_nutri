@@ -2,6 +2,7 @@
   "name": "calendar_nutri",
   "version": "1.0.0",
   "description": "description",
+  "homepage": "https://red-handed-guy.github.io/Calendar_nutri/",
   "main": "index.js",
   "preset": "ts-jest",
   "testEnvironment": "node",
