@@ -9,6 +9,7 @@ import {
   setNewChoice,
 } from '../../redux/slices/saved_choices_slice'
 import { concatDate } from '../../utils/consts'
+import { resetSelectedDate } from '../../redux/slices/selected_day_slice'
 
 const ActivePage: FC = () => {
   const [isPopupOpened, setIsPopupOpened] = useState<boolean>(false)
@@ -40,6 +41,7 @@ const ActivePage: FC = () => {
 
   const handleClickPopupBackground = () => {
     setIsPopupOpened(false)
+    dispatch(resetSelectedDate())
   }
 
   const makeChoice: MouseEventHandler<HTMLButtonElement> = e => {
@@ -120,12 +122,14 @@ const ActivePage: FC = () => {
         </div>
       </div>
 
-      <div
-        onClick={handleClickPopupBackground}
-        className={`${styles.popup} ${isPopupOpened && styles.popup_active}`}
-      >
-        <Calendar setIsPopupOpened={setIsPopupOpened} />
-      </div>
+      {isPopupOpened && (
+        <div
+          onClick={handleClickPopupBackground}
+          className={`${styles.popup} ${isPopupOpened && styles.popup_active}`}
+        >
+          <Calendar setIsPopupOpened={setIsPopupOpened} />
+        </div>
+      )}
     </section>
   )
 }

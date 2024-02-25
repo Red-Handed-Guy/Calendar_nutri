@@ -6,7 +6,6 @@ import { findLastDay } from '../../utils/consts'
 interface DateSliceInterface {
   todayDate: DateInterface
   activeDate: DateInterface
-  selectedDate: DateInterface
 }
 
 const initialState: DateSliceInterface = {
@@ -21,11 +20,6 @@ const initialState: DateSliceInterface = {
     year: null,
     month: null,
   },
-  selectedDate: {
-    day: null,
-    year: null,
-    month: null,
-  },
 }
 
 const dateSlice = createSlice({
@@ -34,15 +28,6 @@ const dateSlice = createSlice({
   reducers: {
     setTodayDate: (state, action: PayloadAction<{ today: DateInterface }>) => {
       state.todayDate = action.payload.today
-    },
-    setSelectedDate: (
-      state,
-      action: PayloadAction<{ selected: DateInterface }>,
-    ) => {
-      state.selectedDate = action.payload.selected
-    },
-    resetSelectedDate: state => {
-      state.selectedDate = initialState.selectedDate
     },
 
     setActiveDate: (
@@ -101,13 +86,7 @@ const dateSlice = createSlice({
   },
 })
 
-export const {
-  setTodayDate,
-  setActiveDate,
-  setNextDay,
-  setPreviousDay,
-  setSelectedDate,
-  resetSelectedDate,
-} = dateSlice.actions
+export const { setTodayDate, setActiveDate, setNextDay, setPreviousDay } =
+  dateSlice.actions
 
 export default dateSlice.reducer

@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from 'react'
 import styles from './day.module.scss'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
-import { setSelectedDate } from '../../../redux/slices/date_slice'
+import { setSelectedDate } from '../../../redux/slices/selected_day_slice'
 import { concatDate } from '../../../utils/consts'
 import { ChoiceType } from '../../../types'
 
@@ -12,10 +12,10 @@ interface DayInterface {
 
 const Day: FC<DayInterface> = ({ day, index }) => {
   const activeDate = useAppSelector(state => state.dateSlice.activeDate)
-  const selectedDate = useAppSelector(state => state.dateSlice.selectedDate)
-  const activeMonthDate = useAppSelector(
-    state => state.activeMonthsEnumlice.date,
+  const selectedDate = useAppSelector(
+    state => state.selectedDateSlice.selectedDate,
   )
+  const activeMonthDate = useAppSelector(state => state.activeMonthsSlice.date)
   const todayDate = useAppSelector(state => state.dateSlice.todayDate)
 
   const savedChoices = useAppSelector(

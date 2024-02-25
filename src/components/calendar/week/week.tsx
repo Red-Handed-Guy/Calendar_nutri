@@ -8,9 +8,7 @@ interface WeekInterface {
 }
 
 const Week: FC<WeekInterface> = ({ weekArr }) => {
-  const activeMonthDate = useAppSelector(
-    state => state.activeMonthsEnumlice.date,
-  )
+  const activeMonthDate = useAppSelector(state => state.activeMonthsSlice.date)
   return (
     <tr>
       {weekArr.map((day, i) =>

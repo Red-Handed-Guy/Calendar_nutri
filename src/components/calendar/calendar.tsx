@@ -9,7 +9,8 @@ import {
   monthIncrement,
 } from '../../redux/slices/active_month_slice'
 import SubmitButton from '../submit_button/submit_button'
-import { resetSelectedDate, setActiveDate } from '../../redux/slices/date_slice'
+import { setActiveDate } from '../../redux/slices/date_slice'
+import { resetSelectedDate } from '../../redux/slices/selected_day_slice'
 
 interface CalendarInterface {
   setIsPopupOpened: React.Dispatch<React.SetStateAction<boolean>>
@@ -17,10 +18,12 @@ interface CalendarInterface {
 
 const Calendar: FC<CalendarInterface> = ({ setIsPopupOpened }) => {
   const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(false)
-  const activeMonth = useAppSelector(state => state.activeMonthsEnumlice)
+  const activeMonth = useAppSelector(state => state.activeMonthsSlice)
   const todayDate = useAppSelector(state => state.dateSlice.todayDate)
 
-  const selectedDate = useAppSelector(state => state.dateSlice.selectedDate)
+  const selectedDate = useAppSelector(
+    state => state.selectedDateSlice.selectedDate,
+  )
 
   const dispatch = useAppDispatch()
 

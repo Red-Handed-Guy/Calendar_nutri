@@ -16,7 +16,7 @@ const initialState: ActiveMonthInterface = {
   },
 }
 
-const activeMonthsEnumlice = createSlice({
+const activeMonthsSlice = createSlice({
   name: 'activeMonth',
   initialState,
   reducers: {
@@ -52,6 +52,6 @@ const activeMonthsEnumlice = createSlice({
 })
 
 export const { setMonth, monthIncrement, monthDecrement } =
-  activeMonthsEnumlice.actions
+  activeMonthsSlice.actions
 
-export default activeMonthsEnumlice.reducer
+export default activeMonthsSlice.reducer

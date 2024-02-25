@@ -1,3 +1,5 @@
+@import "../../styles/const.scss";
+
 .main {
   width: 100%;
   display: flex;
@@ -5,4 +7,24 @@
   align-items: center;
   height: 100%;
   flex: 1 0 auto;
+}
+
+.popup {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: rgba($color: $black, $alpha: 0.2);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.popup_active {
+  visibility: visible;
+  opacity: 1;
 }
