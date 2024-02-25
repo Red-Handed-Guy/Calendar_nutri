@@ -1,5 +1,4 @@
 import './index.scss'
-import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './components/app/app'
 import { Provider } from 'react-redux'
@@ -13,9 +12,7 @@ if (!root) {
 const container = createRoot(root)
 
 container.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
 )
