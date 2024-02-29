@@ -17,7 +17,7 @@ const ActivePageContent: FC = () => {
   )
 
   useEffect(() => {
-    const foundDate = savedChoices.filter(
+    const foundDate = savedChoices.find(
       item =>
         item.date ===
         concatDate({
@@ -26,10 +26,8 @@ const ActivePageContent: FC = () => {
           day: activeDate.day,
         }),
     )
-    if (foundDate.length > 0) {
-      foundDate.forEach(item => {
-        setChoice(item.choice)
-      })
+    if (foundDate) {
+      setChoice(foundDate.choice)
     } else {
       setChoice('empty')
     }

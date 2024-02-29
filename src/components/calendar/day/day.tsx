@@ -49,7 +49,7 @@ const Day: FC<DayInterface> = ({ day, index }) => {
   ])
 
   useEffect(() => {
-    const foundDate = savedChoices.filter(
+    const foundDate = savedChoices.find(
       item =>
         item.date ===
         concatDate({
@@ -58,10 +58,8 @@ const Day: FC<DayInterface> = ({ day, index }) => {
           day: day,
         }),
     )
-    if (foundDate.length > 0) {
-      foundDate.forEach(item => {
-        setStatusColor(item.choice)
-      })
+    if (foundDate) {
+      setStatusColor(foundDate.choice)
     } else {
       setStatusColor('gray')
     }
